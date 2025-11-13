@@ -5,7 +5,7 @@ import os
 import streamlit as st
 st.write("當前目錄下所有檔案：", os.listdir('.'))
 
-data = pd.read_excel('./Beidou_satellites_Question_Bank.xlsx')
+data = pd.read_excel('Beidou_satellites_Question_Bank/Beidou_satellites_Question_Bank.xlsx')
 
 if 'score' not in st.session_state:
     st.session_state.score = 0
@@ -86,5 +86,6 @@ else:
     if st.session_state.wrong_ids:
         if st.button("隨機重做錯題"):
             pick_random_wrong()
+
 
 
