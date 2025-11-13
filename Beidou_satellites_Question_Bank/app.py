@@ -52,8 +52,10 @@ if st.session_state.current_question_idx is not None:
             st.success("答對了！")
             st.session_state.score += 1
         else:
-            st.error(f"答錯了！正確答案是 {correct}\n解析：{question['Explain']}")
-            # 錯題保存
+            # 找到正確選項的index
+            correct_idx = options.index(correct)
+            correct_letter = chr(65 + correct_idx)
+            st.error(f"答錯了！正確答案是 {correct_letter} 解析：{question['Explain']}")
             qid = st.session_state.current_question_idx
             if qid not in st.session_state.wrong_ids:
                 st.session_state.wrong_ids.append(qid)
@@ -86,6 +88,7 @@ else:
     if st.session_state.wrong_ids:
         if st.button("隨機重做錯題"):
             pick_random_wrong()
+
 
 
 
